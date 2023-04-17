@@ -33,12 +33,29 @@ print((gyro))
 print((time))
 
 
-fig, ax = plt.subplots(2,1)
+fig, ax = plt.subplots(6,1)
 
-ax[0].plot(time, accel)
-ax[0].set_xlabel('Time')
-ax[0].set_ylabel('Accel in m/s2')
-ax[1].plot(time, gyro)
-ax[1].set_xlabel('Time')
-ax[1].set_ylabel('Angular velocity in DPS')
+ax[0,0].plot(time, accel[0])
+ax[0,0].set_xlabel('Time')
+ax[0,0].set_ylabel('Accel in m/s2 (x)')
+ax[0,1].plot(time, accel[1])
+ax[0,1].set_xlabel('Time')
+ax[0,1].set_ylabel('Accel in m/s2 (y)')
+ax[0,2].plot(time, accel[2])
+ax[0,2].set_xlabel('Time')
+ax[0,2].set_ylabel('Accel in m/s2 (z)')
+
+
+
+ax[1,0].plot(time, gyro[1])
+ax[1,0].set_xlabel('Time')
+ax[1,0].set_ylabel('Angular velocity in DPS (x)')
+ax[1,1].plot(time, gyro[2])
+ax[1,1].set_xlabel('Time')
+ax[1,1].set_ylabel('Angular velocity in DPS (y)')
+ax[1,2].plot(time, gyro[3])
+ax[1,2].set_xlabel('Time')
+ax[1,2].set_ylabel('Angular velocity in DPS (z)')
+
+
 plt.show()
