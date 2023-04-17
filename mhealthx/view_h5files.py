@@ -18,38 +18,38 @@ for group in f.keys() :
 # Each alias here is a subgroup
 
 
-accel = (list(f['Sensors']['3142']['Accelerometer']))
-gyro = (list(f['Sensors']['3142']['Gyroscope']))
-time = (list(f['Sensors']['3142']['Time']))
+accel = (np.array(f['Sensors']['3142']['Accelerometer']))
+gyro = (np.array(f['Sensors']['3142']['Gyroscope']))
+time = (np.array(f['Sensors']['3142']['Time']))
 ## Time is in string, you will have to convert to timestamps
 time = [datetime.fromtimestamp((x)/1000000) for x in time]
 
-print((accel[0][0]))
+print((accel[:,0].shape))
 
 
 fig, ax = plt.subplots(6,1)
 
-ax[0].plot(time, accel[:][0])
+ax[0].plot(time, accel[:,0])
 ax[0].set_xlabel('Time')
 ax[0].set_ylabel('Accel in m/s2 (x)')
-ax[1].plot(time, accel[:][1])
+ax[1].plot(time, accel[:,1])
 ax[1].set_xlabel('Time')
 ax[1].set_ylabel('Accel in m/s2 (y)')
-ax[2].plot(time, accel[:][2])
+ax[2].plot(time, accel[:,2])
 ax[2].set_xlabel('Time')
 ax[2].set_ylabel('Accel in m/s2 (z)')
 
 
 
-ax[4].plot(time, gyro[:][0])
+ax[3].plot(time, gyro[:,0])
+ax[3].set_xlabel('Time')
+ax[3].set_ylabel('Angular velocity in DPS (x)')
+ax[4].plot(time, gyro[:,1])
 ax[4].set_xlabel('Time')
-ax[4].set_ylabel('Angular velocity in DPS (x)')
-ax[5].plot(time, gyro[:][1])
+ax[4].set_ylabel('Angular velocity in DPS (y)')
+ax[5].plot(time, gyro[:,2])
 ax[5].set_xlabel('Time')
-ax[5].set_ylabel('Angular velocity in DPS (y)')
-ax[6].plot(time, gyro[:][2])
-ax[6].set_xlabel('Time')
-ax[6].set_ylabel('Angular velocity in DPS (z)')
+ax[5].set_ylabel('Angular velocity in DPS (z)')
 
 
 plt.show()
